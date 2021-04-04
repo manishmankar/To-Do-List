@@ -1,0 +1,22 @@
+.ToDo {
+  display: flex;
+  justify-content: space-between;
+}
+.ToDo:hover {
+  background-color: white;
+  cursor: pointer;
+
+  border: solid #92a8d1;
+}
+.button {
+  margin-top: 16px;
+  margin-right: 20px;
+}
+
+.button:hover {
+  background-color: red;
+}
+
+.style_inline {
+  list-style: none;
+}

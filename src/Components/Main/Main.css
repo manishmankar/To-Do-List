@@ -1,0 +1,27 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+}
+
+.container {
+  height: 500px;
+  width: 400px;
+  background-color: rgb(196, 192, 192);
+
+  box-shadow: 6px 6px 2px 2px grey;
+  overflow: scroll;
+}
+
+.iteams {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.iteams > input {
+  width: 246px;
+  height: 20px;
+}
