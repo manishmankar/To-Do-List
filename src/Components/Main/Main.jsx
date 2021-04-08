@@ -1,89 +1,68 @@
 import "./Main.css";
 import React, { useState } from "react";
 import ToDoList from "../ToDoList/ToDoList";
+import { TextField } from "@material-ui/core";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 
 function Main() {
-  const [iteam, setIteam] = useState([]);
+  const [item, setItem] = useState([]);
   const [note, setNote] = useState("");
 
-  const [checked, setChecked] = useState(false);
-
-  const onchange = (e) => {
+  const onChangeHandler = (e) => {
     setNote(e.target.value);
-    // setNote(e.target.value);
-    console.log(note);
   };
 
-  const onclick = (e) => {
-    // setIteam((olddata) => {
-    //   return [...olddata, note];
-    // });
-    // console.log(iteam);
-
-    // setNote("");
-
-    setIteam([
-      ...iteam,
-      {
-        id: iteam.length,
-        name: note,
-        done: false,
-      },
-    ]);
-    setNote("");
-    console.log(iteam);
+  const onClickhandler = (e) => {
+    e.preventDefault();
+    item.unshift({
+      id: item.length,
+      name: note,
+      done: false,
+    });
   };
 
-  const ondelethandler = (id) => {
-    console.log(id);
-    setIteam((olddata) => {
+  const onDeletHandler = (id) => {
+    setItem((olddata) => {
       return olddata.filter((olddata, index) => {
         return index !== id;
       });
     });
   };
 
-  const handleChange = (itemIndex) => {
-    console.log(itemIndex.id);
-
-    var todo = iteam[itemIndex.id];
-
-    iteam.splice(itemIndex.id, 1);
-
+  const checkHandler = (itemIndex) => {
+    var todo = item[itemIndex];
+    item.splice(itemIndex, 1);
     todo.done = !todo.done;
-    todo.done ? iteam.push(todo) : iteam.unshift(todo);
-
-    setIteam(iteam);
-    console.log(iteam);
+    console.log(todo);
+    todo.done ? item.push(todo) : item.unshift(todo);
+    console.log(item);
+    setItem([...item]);
   };
 
   return (
     <div className="main">
       <div className="container">
-        <div className="iteams">
-          <input
-            type="text"
-            onChange={onchange}
+        <div className="text">TODO</div>
+        <form onSubmit={onClickhandler} className="inputBox">
+          <TextField
+            id="outlined-secondary"
+            variant="outlined"
+            color="primary"
+            placeholder="Add New Task"
+            onChange={onChangeHandler}
             value={note}
-            name="contain"
-          ></input>
-          <button onClick={onclick}>+</button>
-        </div>
-        {/* {iteam.map((data, index) => {
-          return (
-            <ToDoList
-              text={data}
-              key={index}
-              id={index}
-              onselect={ondelethandler}
-              handleChange={handleChange}
-            />
-          );
-        })} */}
+            required
+          />
+          <Fab type="submit" color="primary" aria-label="add">
+            <AddIcon />
+          </Fab>
+        </form>
+
         <ToDoList
-          data={iteam}
-          onselect={ondelethandler}
-          handleChange={handleChange}
+          data={item}
+          onDeletHandler={onDeletHandler}
+          checkHandler={checkHandler}
         />
       </div>
     </div>

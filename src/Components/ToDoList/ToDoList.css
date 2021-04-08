@@ -1,22 +1,43 @@
 .ToDo {
   display: flex;
   justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  border-bottom: solid 1px;
 }
-.ToDo:hover {
-  background-color: white;
-  cursor: pointer;
 
-  border: solid #92a8d1;
-}
 .button {
   margin-top: 16px;
   margin-right: 20px;
 }
 
-.button:hover {
-  background-color: red;
+.todoItem {
+  display: flex;
+  align-items: center;
+}
+.todoText {
+  margin-left: 10px;
+}
+.trueBox {
+  width: 14px;
+  height: 14px;
+  border: solid 1px;
 }
 
-.style_inline {
-  list-style: none;
+.falseBox {
+  width: 16px;
+  height: 16px;
+  background-color: greenyellow;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .MuiOutlinedInput-input {
+    padding: 9.5px 14px !important;
+  }
+
+  .MuiFab-root {
+    color: rgba(0, 0, 0, 0.87);
+    width: 35px !important;
+    height: 35px !important;
+  }
 }
