@@ -10,8 +10,9 @@ function ToDoList(props) {
     <div>
       {props.data.map((data, index) => {
         const checkValue = data.done;
+
         return (
-          <div key={index} className="ToDo">
+          <div key={index} index={index} className="ToDo">
             <div className="todoItem">
               <div
                 className={checkValue ? "falseBox" : "trueBox"}

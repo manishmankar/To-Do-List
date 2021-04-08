@@ -13,13 +13,15 @@ function Main() {
     setNote(e.target.value);
   };
 
-  const onClickhandler = (e) => {
+  const onClickHandler = (e) => {
     e.preventDefault();
     item.unshift({
       id: item.length,
       name: note,
       done: false,
     });
+
+    setNote("");
   };
 
   const onDeletHandler = (id) => {
@@ -36,7 +38,7 @@ function Main() {
     todo.done = !todo.done;
     console.log(todo);
     todo.done ? item.push(todo) : item.unshift(todo);
-    console.log(item);
+
     setItem([...item]);
   };
 
@@ -44,7 +46,7 @@ function Main() {
     <div className="main">
       <div className="container">
         <div className="text">TODO</div>
-        <form onSubmit={onClickhandler} className="inputBox">
+        <form onSubmit={onClickHandler} className="inputBox">
           <TextField
             id="outlined-secondary"
             variant="outlined"
