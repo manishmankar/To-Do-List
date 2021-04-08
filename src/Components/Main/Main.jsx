@@ -36,7 +36,6 @@ function Main() {
     var todo = item[itemIndex];
     item.splice(itemIndex, 1);
     todo.done = !todo.done;
-    console.log(todo);
     todo.done ? item.push(todo) : item.unshift(todo);
 
     setItem([...item]);
